@@ -1,0 +1,79 @@
+<section class="gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Registro de Vehículo</h2>
+            <p class="text-white-50 mb-5">Ingresa los datos de tu vehículo</p>
+            <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+              <div class="form-outline form-white mb-4">
+                <label for="placa" class="form-label">Placa de tu vehículo</label>
+                <input
+                  type="text"
+                  id="placa"
+                  class="form-control form-control-lg"
+                  formControlName="placa"
+                  placeholder="Ingresa la placa"
+                  required
+                />
+                <div
+                  *ngIf="vehicleForm.get('placa')?.invalid && vehicleForm.get('placa')?.touched"
+                  class="text-danger"
+                >
+                  La placa es obligatoria.
+                </div>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="marca" class="form-label">Marca del auto</label>
+                <select id="marca" class="form-select" formControlName="marca" required>
+                  <option value="" disabled selected>Selecciona una marca</option>
+                  <option>Marca 1</option>
+                  <option>Marca 2</option>
+                  <option>Marca 3</option>
+                </select>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="modelo" class="form-label">Modelo del auto</label>
+                <select id="modelo" class="form-select" formControlName="modelo" required>
+                  <option value="" disabled selected>Selecciona un modelo</option>
+                  <option>Modelo 1</option>
+                  <option>Modelo 2</option>
+                  <option>Modelo 3</option>
+                </select>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="year" class="form-label">Fecha del auto</label>
+                <select id="year" class="form-select" formControlName="year" required>
+                  <option value="" disabled selected>Selecciona una fecha</option>
+                  <option>2020</option>
+                  <option>2021</option>
+                  <option>2022</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                </select>
+              </div>
+              <!-- <div class="form-outline form-white mb-4">
+                <label for="comentarios" class="form-label">Comentarios adicionales</label>
+                <textarea
+                  id="comentarios"
+                  class="form-control form-control-lg"
+                  formControlName="comentarios"
+                  rows="4"
+                  placeholder="Escribe tus comentarios"
+                ></textarea>
+              </div> -->
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" (click)="onBack()">
+                  &#8592; Volver
+                </button>
+                <button type="submit" class="btn btn-primary">Enviar &#10148;</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

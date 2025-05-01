@@ -1,0 +1,43 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Programa tu nueva cita</h2>
+            <p class="text-white-50 mb-5">Ingresa los detalles de tu cita</p>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="form-outline form-white mb-4">
+                <select id="vehiculo" class="form-select form-control-lg" formControlName="vehiculo" required>
+                  <option value="">Seleccione un vehiculo</option>
+                  @for (veh of vehicles$ | async; track veh) {
+                    <option [value]="veh.idVehiculo">{{ veh.idVehiculo }}: {{ veh.marca }} - {{ veh.modelo }} -  {{ veh.year }}</option>
+                  } @empty {
+                    <option value="">No hay vehiculos</option>
+                  }
+                </select>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" id="fecha" class="form-control form-control-lg" formControlName="fecha" required>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="servicio" class="form-label">Servicio</label>
+                <select id="servicio" class="form-select form-control-lg" formControlName="servicio" required>
+                  <option value="">Seleccione un servicio</option>
+                  @for (servicio of servicios; track servicio.id) {
+                    <option [value]="servicio.id">{{ servicio.name }}</option>
+                  } @empty {
+                    <option value="">No hay servicios</option>
+                  }
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg px-5">Reservar</button>
+            </form>
+            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 me-3 mt-4" type="button" (click)="onBack()">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

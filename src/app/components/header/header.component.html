@@ -1,0 +1,61 @@
+<header class="bg-white text-black border-bottom">
+    <div class="d-flex justify-content-end bg-dark p-2 px-4">
+      <i class="bi bi-geo-alt-fill text-white me-3"></i>
+      <p class="text-white mb-0 mx-3">Calle 123, Lima, Peru</p>
+  
+      <i class="bi bi-telephone-fill text-white me-3"></i>
+      <a href="tel:123456789" class="text-white text-decoration-none me-3">123456789</a>
+  
+      <i class="bi bi-envelope-fill text-white me-3"></i>
+      <a href="mailto:empresa&#64;mail.com" class="text-white text-decoration-none">sigauto&#64;mail.com</a>
+    </div>
+    <div class="main-container m-5 d-flex justify-content-between">
+      <div class="business d-flex">
+        <a routerLink="/" class="d-flex align-items-center text-decoration-none">
+          <i class="bi bi-car-front me-3" style="font-size: 50px; color: red; align-self: center;"></i>
+          <h1 class="fw-bolder mb-0 text-dark">TALLER</h1>
+        </a>
+      </div>
+      <div class="buttons d-flex">
+        <a routerLink="/" class="btn btn-outline-primary me-3 inicio align-self-center">INICIO</a>
+        <div ngbDropdown class="d-inline-block align-self-center">
+          <button type="button" class="btn btn-outline-primary me-3" id="dropdownServicios" ngbDropdownToggle>
+            SERVICIOS
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownServicios">
+            <button ngbDropdownItem>Servicio 1</button>
+            <button ngbDropdownItem>Servicio 2</button>
+            <button ngbDropdownItem>Servicio 3</button>
+          </div>
+        </div>
+        <div ngbDropdown class="d-inline-block align-self-center">
+          <button type="button" class="btn btn-outline-primary me-3" id="dropdownContactos" ngbDropdownToggle>
+            CONTACTOS
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownContactos">
+            <button ngbDropdownItem>Contacto 1</button>
+            <button ngbDropdownItem>Contacto 2</button>
+            <button ngbDropdownItem>Contacto 3</button>
+          </div>
+        </div>
+
+        @if (authService.isLoggedIn()) {
+            <div ngbDropdown class="d-inline-block">
+                <button ngbDropdownToggle class="btn btn-outline-primary d-flex align-items-center border-0">
+                  <i class="bi bi-person-circle me-2" style="font-size: 40px;"></i>
+                  <span>Hola, {{ names }}</span>
+                </button>
+                <div ngbDropdownMenu>
+                    <button ngbDropdownItem routerLink="/me">Perfil</button>
+                    <button ngbDropdownItem routerLink="/register-cita">Programar cita</button>
+                    <button ngbDropdownItem routerLink="/register-vehicle">Registrar vehiculo</button>
+                    <button ngbDropdownItem routerLink="/cita-history">Historial</button>
+                    <button ngbDropdownItem (click)="logout()">Salir</button>
+                </div>
+              </div>
+        } @else {
+            <button routerLink="/login" class="btn btn-primary me-3 login align-self-center">ENTRAR</button>
+        }
+      </div>
+    </div>
+  </header>

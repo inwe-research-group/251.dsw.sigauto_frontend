@@ -1,0 +1,44 @@
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Historial de Citas</h2>
+            <p class="text-white-50 mb-5">Revisa el estado de tus citas</p>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID Cita</th>
+                    <th scope="col">Vehículo</th>
+                    <th scope="col">Servicio</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (cita of citas$ | async; track cita.idCita) {
+                  <tr>
+                    <td>{{ cita.idCita }}</td>
+                    <td>{{ cita.vehiculo.marca }} {{ cita.vehiculo.modelo }} ({{ cita.vehiculo.placa }})</td>
+                    <td>{{ getServicioById(cita.idTipoServicio) }}</td>
+                    <td>{{ cita.fecha | date: 'short' }}</td>
+                    <td>{{ cita.estado ? 'ACTIVA' : 'INACTIVA' }}</td>
+                  </tr>
+                } @empty {
+                  <tr>
+                    <td colspan="5">No hay citas</td>
+                  </tr>
+                }
+                </tbody>
+              </table>
+            </div>
+            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 me-3 mt-4" type="button" (click)="onBack()">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

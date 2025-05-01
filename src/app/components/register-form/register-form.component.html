@@ -1,0 +1,86 @@
+<section class="gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h2 class="fw-bold mb-2 text-uppercase">Registro de usuario</h2>
+            <p class="text-white-50 mb-5">Ingresa tus datos</p>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline form-white">
+                    <label for="tipo-documento" class="form-label">Tipo de Documento</label>
+                    <select class="form-select" id="tipo-documento" formControlName="tipo_documento" required>
+                      <option value="">Seleccione...</option>
+                      <option value="DNI">DNI</option>
+                      <option value="RUC">RUC</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline form-white">
+                    <label for="nro-documento" class="form-label">Nro de Documento</label>
+                    <input type="text" class="form-control form-control-lg" id="nro-documento" formControlName="numero_documento" required>
+                  </div>
+                </div>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="nombres" class="form-label">Nombres</label>
+                <input type="text" class="form-control form-control-lg" id="nombres" formControlName="nombres" required>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="apellido-paterno" class="form-label">Apellido Paterno</label>
+                <input type="text" class="form-control form-control-lg" id="apellido-paterno" formControlName="apellido_paterno" required>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="apellido-materno" class="form-label">Apellido Materno</label>
+                <input type="text" class="form-control form-control-lg" id="apellido-materno" formControlName="apellido_materno" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline form-white">
+                    <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control form-control-lg" id="fecha-nacimiento" formControlName="fecha_nacimiento" required>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline form-white">
+                    <label for="sexo" class="form-label">Sexo</label>
+                    <select class="form-select" id="sexo" formControlName="sexo" required>
+                      <option value="">Seleccione...</option>
+                      <option value="M">Masculino</option>
+                      <option value="F">Femenino</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control form-control-lg" id="telefono" formControlName="telefono" required>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control form-control-lg" id="email" formControlName="email" required>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control form-control-lg" id="direccion" formControlName="direccion" required>
+              </div>
+
+              <!-- // password -->
+              <div class="form-outline form-white mb-4">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control form-control-lg" id="password" formControlName="password" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg px-5">Registrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
