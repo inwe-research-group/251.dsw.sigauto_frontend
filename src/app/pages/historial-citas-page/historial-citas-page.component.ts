@@ -11,24 +11,21 @@ import { TokenService } from '@services/token.service';
   standalone: true,
   imports: [AsyncPipe, JsonPipe, DatePipe],
   templateUrl: './historial-citas-page.component.html',
-  styleUrl: './historial-citas-page.component.scss'
+  styleUrl: './historial-citas-page.component.scss',
 })
 export class HistorialCitasPageComponent {
   router = inject(Router);
-
-
   citasService = inject(CitasService);
   tiposServicioService = inject(TiposServicioService);
   tokenService = inject(TokenService);
+  clientId = this.tokenService.getClienteId();
+  citas$ = this.citasService.getCitasByClienteId(this.clientId);
 
-  clientId = this.tokenService.getClienteId
-
-  citas$ = this.citasService.getCitasByClienteId(+this.clientId);
-  getServicioById(id: number){
+  getServicioById(id: number) {
     return this.tiposServicioService.getServicioById(id);
   }
 
-  onBack(){
+  onBack() {
     this.router.navigate(['/home']);
   }
 }

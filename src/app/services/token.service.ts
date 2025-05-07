@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
   private getDecodedToken(): any | null {
@@ -37,11 +37,11 @@ export class TokenService {
     return 'personaId';
   }
 
-  getClienteId(): string {
+  getClienteId(): number {
     const decodedToken = this.getDecodedToken();
     if (decodedToken && decodedToken.clienteId) {
       return decodedToken.clienteId;
     }
-    return 'clienteId';
+    return -1;
   }
 }
